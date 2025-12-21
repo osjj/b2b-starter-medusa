@@ -1,6 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+:root {
+  /* Background Colors */
+  --bg-page: #F5F5F5;
+  --bg-card: #FFFFFF;
+  --bg-dark: #1A1A1A;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --bg-overlay-light: rgba(0, 0, 0, 0.4);
+  
+  /* Accent Colors */
+  --accent-primary: #FF8F00;
+  --accent-primary-hover: #E68200;
+  --accent-secondary: #FFA726;
+  
+  /* Text Colors */
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-muted: #9E9E9E;
+  --text-inverse: #FFFFFF;
+  
+  /* Border Colors */
+  --border-light: #E0E0E0;
+  --border-dark: #424242;
+  
+  /* Font Family */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+}
 
 @layer utilities {
   /* Chrome, Safari and Opera */

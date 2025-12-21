@@ -1,3 +1,4 @@
+const path = require("path")
 const checkEnvVariables = require("./check-env-variables")
 
 checkEnvVariables()
@@ -7,6 +8,7 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: path.join(__dirname, "./"),
   typescript: {
     ignoreBuildErrors: true,
   },
