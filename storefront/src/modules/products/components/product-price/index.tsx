@@ -17,6 +17,11 @@ export default function ProductPrice({
 
   return (
     <div className="flex flex-col text-neutral-950">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+          Reference Price
+        </span>
+      </div>
       <span
         className={clx({
           "text-ui-fg-interactive": cheapestPrice.price_type === "sale",

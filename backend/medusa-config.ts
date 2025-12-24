@@ -1,6 +1,7 @@
 import { QUOTE_MODULE } from "./src/modules/quote";
 import { APPROVAL_MODULE } from "./src/modules/approval";
 import { COMPANY_MODULE } from "./src/modules/company";
+import { SIMPLE_QUOTE_MODULE } from "./src/modules/simple-quote";
 import { loadEnv, defineConfig, Modules } from "@medusajs/framework/utils";
 
 loadEnv(process.env.NODE_ENV!, process.cwd());
@@ -25,6 +26,9 @@ module.exports = defineConfig({
     },
     [APPROVAL_MODULE]: {
       resolve: "./modules/approval",
+    },
+    [SIMPLE_QUOTE_MODULE]: {
+      resolve: "./modules/simple-quote",
     },
     [Modules.CACHE]: {
       resolve: "@medusajs/medusa/cache-inmemory",

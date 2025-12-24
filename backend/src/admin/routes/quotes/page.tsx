@@ -1,5 +1,3 @@
-import { defineRouteConfig } from "@medusajs/admin-sdk";
-import { DocumentText } from "@medusajs/icons";
 import { Container, Heading, Toaster } from "@medusajs/ui";
 import { QuotesTable } from "./components/quotes-table";
 
@@ -18,9 +16,7 @@ const Quotes = () => {
   );
 };
 
-export const config = defineRouteConfig({
-  label: "Quotes",
-  icon: DocumentText,
-});
+// Note: Config export removed to hide from sidebar menu
+// The native Quotes functionality is replaced by Simple Quotes (Quote Requests)
 
 export default Quotes;

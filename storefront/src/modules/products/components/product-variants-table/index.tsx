@@ -148,7 +148,7 @@ const ProductVariantsTable = ({
         />
         {totalQuantity === 0
           ? "Choose product variant(s) above"
-          : "Add to cart"}
+          : "Add to Quote"}
       </Button>
     </div>
   )

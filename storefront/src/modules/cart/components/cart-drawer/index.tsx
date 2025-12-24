@@ -1,19 +1,17 @@
 "use client"
 
 import { useCart } from "@/lib/context/cart-context"
-import { checkSpendingLimit } from "@/lib/util/check-spending-limit"
-import { getCheckoutStep } from "@/lib/util/get-checkout-step"
 import { convertToLocale } from "@/lib/util/money"
 import AppliedPromotions from "@/modules/cart/components/applied-promotions"
 import ApprovalStatusBanner from "@/modules/cart/components/approval-status-banner"
 import ItemsTemplate from "@/modules/cart/templates/items"
 import Button from "@/modules/common/components/button"
-import LocalizedClientLink from "@/modules/common/components/localized-client-link"
 import ShoppingBag from "@/modules/common/icons/shopping-bag"
 import FreeShippingPriceNudge from "@/modules/shipping/components/free-shipping-price-nudge"
+import QuoteFormModal from "@/modules/quotes/components/quote-form-modal"
 import { B2BCustomer } from "@/types"
 import { StoreFreeShippingPrice } from "@/types/shipping-option/http"
-import { ExclamationCircle, LockClosedSolidMini } from "@medusajs/icons"
+import { ChatBubbleLeftRight } from "@medusajs/icons"
 import { Drawer, Text } from "@medusajs/ui"
 import { usePathname } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -32,6 +30,7 @@ const CartDrawer = ({
     undefined
   )
   const [isOpen, setIsOpen] = useState(false)
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false)
 
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
@@ -47,11 +46,6 @@ const CartDrawer = ({
     }, 0) || 0
 
   const subtotal = useMemo(() => cart?.item_subtotal ?? 0, [cart])
-
-  const spendLimitExceeded = useMemo(
-    () => checkSpendingLimit(cart, customer),
-    [cart, customer]
-  )
 
   const itemRef = useRef<number>(totalItems || 0)
 
@@ -103,12 +97,15 @@ const CartDrawer = ({
     close()
   }, [pathname])
 
-  const checkoutStep = cart ? getCheckoutStep(cart) : undefined
-  const checkoutPath = customer
-    ? checkoutStep
-      ? `/checkout?step=${checkoutStep}`
-      : "/checkout"
-    : "/account"
+  const handleRequestQuote = () => {
+    cancelTimer()
+    setIsQuoteModalOpen(true)
+  }
+
+  const handleQuoteSuccess = () => {
+    setIsQuoteModalOpen(false)
+    close()
+  }
 
   return (
     <>
@@ -131,7 +128,7 @@ const CartDrawer = ({
                     amount: subtotal,
                     currency_code: cart.currency_code,
                   })
-                : "Cart"}
+                : "Quote"}
             </span>
             <div className="bg-blue-500 text-white text-xs px-1.5 py-px rounded-full">
               {totalItems}
@@ -145,8 +142,8 @@ const CartDrawer = ({
           <Drawer.Header className="flex self-center">
             <Drawer.Title>
               {totalItems > 0
-                ? `You have ${totalItems} items in your cart`
-                : "Your cart is empty"}
+                ? `You have ${totalItems} items for quote`
+                : "Your quote list is empty"}
             </Drawer.Title>
           </Drawer.Header>
           {cart?.approvals && cart.approvals.length > 0 && (
@@ -176,7 +173,7 @@ const CartDrawer = ({
                     />
                   )}
                   <div className="flex justify-between">
-                    <Text>Subtotal</Text>
+                    <Text>Reference Subtotal</Text>
                     <Text>
                       {convertToLocale({
                         amount: subtotal,
@@ -185,38 +182,15 @@ const CartDrawer = ({
                     </Text>
                   </div>
                   <div className="flex flex-col gap-y-2">
-                    <LocalizedClientLink href="/cart">
-                      <Button
-                        variant="secondary"
-                        className="w-full"
-                        size="large"
-                      >
-                        View Cart
-                      </Button>
-                    </LocalizedClientLink>
-                    <LocalizedClientLink href={checkoutPath}>
-                      <Button
-                        className="w-full"
-                        size="large"
-                        disabled={totalItems === 0 || spendLimitExceeded}
-                      >
-                        <LockClosedSolidMini />
-                        {customer
-                          ? spendLimitExceeded
-                            ? "Spending Limit Exceeded"
-                            : "Secure Checkout"
-                          : "Log in to checkout"}
-                      </Button>
-                    </LocalizedClientLink>
-                    {spendLimitExceeded && (
-                      <div className="flex items-center gap-x-2 bg-neutral-100 p-3 rounded-md shadow-borders-base">
-                        <ExclamationCircle className="text-orange-500 w-fit overflow-visible" />
-                        <p className="text-neutral-950 text-xs">
-                          This order exceeds your spending limit. Please contact
-                          your manager for approval.
-                        </p>
-                      </div>
-                    )}
+                    <Button
+                      className="w-full"
+                      size="large"
+                      disabled={totalItems === 0}
+                      onClick={handleRequestQuote}
+                    >
+                      <ChatBubbleLeftRight className="mr-2" />
+                      Request Quote
+                    </Button>
                   </div>
                 </div>
               </>
@@ -224,6 +198,12 @@ const CartDrawer = ({
           </div>
         </Drawer.Content>
       </Drawer>
+
+      <QuoteFormModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
+        onSuccess={handleQuoteSuccess}
+      />
     </>
   )
 }
