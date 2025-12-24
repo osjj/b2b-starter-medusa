@@ -1,12 +1,13 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { SIMPLE_QUOTE_MODULE } from "../../../modules/simple-quote";
+import SimpleQuoteModuleService from "../../../modules/simple-quote/service";
 import { CreateSimpleQuoteType } from "./validators";
 
 export const POST = async (
   req: MedusaRequest<CreateSimpleQuoteType>,
   res: MedusaResponse
 ) => {
-  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE);
+  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE) as SimpleQuoteModuleService;
 
   const { name, email, contact_info, company_name, remark, cart_items } =
     req.validatedBody;

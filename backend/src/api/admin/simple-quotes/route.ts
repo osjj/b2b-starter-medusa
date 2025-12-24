@@ -3,13 +3,14 @@ import {
   MedusaResponse,
 } from "@medusajs/framework";
 import { SIMPLE_QUOTE_MODULE } from "../../../modules/simple-quote";
+import SimpleQuoteModuleService from "../../../modules/simple-quote/service";
 import { GetSimpleQuotesParamsType } from "./validators";
 
 export const GET = async (
   req: AuthenticatedMedusaRequest<GetSimpleQuotesParamsType>,
   res: MedusaResponse
 ) => {
-  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE);
+  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE) as SimpleQuoteModuleService;
 
   const { limit = 50, offset = 0, order, q } = req.validatedQuery || {};
 

@@ -4,12 +4,13 @@ import {
 } from "@medusajs/framework";
 import { MedusaError } from "@medusajs/framework/utils";
 import { SIMPLE_QUOTE_MODULE } from "../../../../modules/simple-quote";
+import SimpleQuoteModuleService from "../../../../modules/simple-quote/service";
 
 export const GET = async (
   req: AuthenticatedMedusaRequest,
   res: MedusaResponse
 ) => {
-  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE);
+  const simpleQuoteService = req.scope.resolve(SIMPLE_QUOTE_MODULE) as SimpleQuoteModuleService;
   const { id } = req.params;
 
   const simpleQuote = await simpleQuoteService.retrieveSimpleQuote(id);
