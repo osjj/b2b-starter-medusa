@@ -23,7 +23,7 @@ export const POST = async (
       company_name: company_name || null,
       remark: remark || null,
       file_url,
-      cart_items,
+      cart_items: cart_items as unknown as Record<string, unknown>,
     },
   ]);
 
