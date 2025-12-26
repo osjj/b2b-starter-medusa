@@ -6,7 +6,9 @@ import LocalizedClientLink from "@/modules/common/components/localized-client-li
 
 const menuItems = [
   { label: "Home", href: "/" },
-  { label: "Product", href: "/store" },
+  { label: "Products", href: "/store" },
+  { label: "Cases", href: "/cases" },
+  { label: "News", href: "/news" },
   { label: "About", href: "/about" },
 ]
 

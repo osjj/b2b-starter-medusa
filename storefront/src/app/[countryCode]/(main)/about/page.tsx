@@ -3,8 +3,70 @@ import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "About Us | PPE Pro",
-  description: "Professional PPE Manufacturer for Extreme Environments - Learn about our company, mission, and commitment to safety.",
+  description: "Professional B2B Industrial Parts Procurement Platform - Learn about our company, mission, and commitment to quality.",
 }
+
+// Core values data
+const values = [
+  {
+    icon: "🎯",
+    title: "Professional Focus",
+    description: "Specialized in industrial parts, providing professional products and services",
+  },
+  {
+    icon: "🏆",
+    title: "Quality Assurance",
+    description: "Strict quality management system ensuring product excellence",
+  },
+  {
+    icon: "👥",
+    title: "Customer First",
+    description: "Customer-oriented approach delivering premium service",
+  },
+  {
+    icon: "🌍",
+    title: "Innovation Driven",
+    description: "Continuous innovation leading industry development",
+  },
+]
+
+// Statistics data
+const stats = [
+  { value: "10+", label: "Years Experience" },
+  { value: "10,000+", label: "Enterprise Clients" },
+  { value: "50,000+", label: "Product Types" },
+  { value: "98%", label: "Customer Satisfaction" },
+]
+
+// Company history
+const history = [
+  {
+    year: "2015",
+    title: "Company Founded",
+    description: "Established industrial parts procurement platform, began serving enterprise clients",
+  },
+  {
+    year: "2017",
+    title: "Business Expansion",
+    description: "Product line expanded to 6 major categories, client base exceeded 1,000",
+  },
+  {
+    year: "2019",
+    title: "Platform Upgrade",
+    description: "Launched online procurement platform, achieved full-process digitalization",
+  },
+  {
+    year: "2022",
+    title: "Industry Leader",
+    description: "Client base exceeded 10,000, became industry-leading B2B procurement platform",
+  },
+  {
+    year: "2024",
+    title: "Continuous Innovation",
+    description: "Launched intelligent procurement system, continuing to lead industry development",
+  },
+]
+
 
 export default function AboutPage() {
   return (
@@ -12,8 +74,8 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[40vh] min-h-[300px] bg-ppe-bg-dark">
         <Image
-          src="/account-block.jpg"
-          alt="About PPE Pro"
+          src="/hero-image.jpg"
+          alt="About Us"
           fill
           className="object-cover opacity-40"
           priority
@@ -24,7 +86,7 @@ export default function AboutPage() {
               About Us
             </h1>
             <p className="font-body text-lg text-white/80 max-w-2xl mx-auto px-4">
-              Your Trusted Partner in Workplace Safety
+              Professional B2B Industrial Parts Procurement Platform
             </p>
           </div>
         </div>
@@ -32,87 +94,93 @@ export default function AboutPage() {
 
       {/* Company Introduction */}
       <section className="content-container py-16">
-        <div className="grid small:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="font-heading text-3xl font-bold text-ppe-text-primary mb-6">
-              Who We Are
-            </h2>
-            <p className="font-body text-ppe-text-secondary mb-4 leading-relaxed">
-              PPE Pro is a leading manufacturer of personal protective equipment, 
-              dedicated to providing high-quality safety solutions for workers in 
-              extreme environments worldwide.
-            </p>
-            <p className="font-body text-ppe-text-secondary mb-4 leading-relaxed">
-              With over 15 years of experience in the industry, we have established 
-              ourselves as a trusted partner for businesses across construction, 
-              oil & gas, chemical, and manufacturing sectors.
-            </p>
-            <p className="font-body text-ppe-text-secondary leading-relaxed">
-              Our state-of-the-art manufacturing facility produces over 500,000 
-              pairs of safety equipment monthly, ensuring we can meet the demands 
-              of clients of all sizes.
-            </p>
-          </div>
-          <div className="relative h-[400px] rounded-lg overflow-hidden">
-            <Image
-              src="/account-block.jpg"
-              alt="Our Factory"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-ppe-text-primary mb-6 text-center">
+            Company Profile
+          </h2>
+          <p className="font-body text-ppe-text-secondary mb-4 leading-relaxed">
+            We are a professional platform focused on B2B industrial parts procurement, established in 2015. 
+            After years of development, we have become a leading industrial parts supplier in the industry, 
+            providing quality products and services to over 10,000 enterprise clients.
+          </p>
+          <p className="font-body text-ppe-text-secondary mb-4 leading-relaxed">
+            Our products cover bearings, seals, fasteners, transmission parts, hydraulic components, 
+            pneumatic elements and many other categories. We have a complete supply chain system and 
+            quality management system, committed to providing customers with high-quality products, 
+            competitive prices and professional technical support.
+          </p>
+          <p className="font-body text-ppe-text-secondary leading-relaxed">
+            Adhering to the service philosophy of &quot;Quality First, Customer Supreme&quot;, we continuously 
+            optimize procurement processes, improve service quality, and create greater value for customers.
+          </p>
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Core Values */}
       <section className="bg-ppe-bg-card py-16">
         <div className="content-container">
-          <div className="grid small:grid-cols-2 gap-12">
-            <div className="bg-ppe-bg-page p-8 rounded-lg">
-              <h3 className="font-heading text-2xl font-bold text-ppe-text-primary mb-4">
-                Our Mission
-              </h3>
-              <p className="font-body text-ppe-text-secondary leading-relaxed">
-                To protect workers worldwide by providing innovative, high-quality 
-                personal protective equipment that meets the highest safety standards 
-                while remaining accessible and affordable.
-              </p>
-            </div>
-            <div className="bg-ppe-bg-page p-8 rounded-lg">
-              <h3 className="font-heading text-2xl font-bold text-ppe-text-primary mb-4">
-                Our Vision
-              </h3>
-              <p className="font-body text-ppe-text-secondary leading-relaxed">
-                To become the global leader in PPE manufacturing, setting new 
-                standards for quality, innovation, and customer service in the 
-                workplace safety industry.
-              </p>
-            </div>
+          <h2 className="font-heading text-3xl font-bold text-ppe-text-primary text-center mb-12">
+            Core Values
+          </h2>
+          <div className="grid grid-cols-1 xsmall:grid-cols-2 small:grid-cols-4 gap-8">
+            {values.map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-ppe-accent-primary/10 text-ppe-accent-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                  {item.icon}
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-ppe-text-primary mb-2">
+                  {item.title}
+                </h3>
+                <p className="font-body text-sm text-ppe-text-secondary">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Certifications */}
+
+      {/* Company Stats */}
       <section className="content-container py-16">
-        <h2 className="font-heading text-3xl font-bold text-ppe-text-primary text-center mb-12">
-          Our Certifications
-        </h2>
         <div className="grid grid-cols-2 small:grid-cols-4 gap-8">
-          {["CE", "ANSI", "ISO9001", "EN388"].map((cert) => (
-            <div 
-              key={cert}
-              className="bg-ppe-bg-card p-6 rounded-lg text-center shadow-sm"
-            >
-              <div className="w-16 h-16 mx-auto mb-4 bg-ppe-bg-page rounded-full flex items-center justify-center">
-                <span className="font-heading font-bold text-ppe-accent-primary">
-                  {cert}
-                </span>
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-ppe-bg-card rounded-lg p-8 text-center shadow-sm">
+              <div className="font-heading text-4xl font-bold text-ppe-accent-primary mb-2">
+                {stat.value}
               </div>
-              <p className="font-body text-sm text-ppe-text-secondary">
-                {cert} Certified
-              </p>
+              <div className="font-body text-ppe-text-secondary">{stat.label}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Company History */}
+      <section className="bg-ppe-bg-card py-16">
+        <div className="content-container">
+          <h2 className="font-heading text-3xl font-bold text-ppe-text-primary text-center mb-12">
+            Our Journey
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
+              {history.map((item, index) => (
+                <div key={index} className="flex gap-6">
+                  <div className="w-24 flex-shrink-0 text-right">
+                    <div className="inline-block bg-ppe-accent-primary text-white px-3 py-1 rounded font-heading font-semibold">
+                      {item.year}
+                    </div>
+                  </div>
+                  <div className={`flex-1 ${index < history.length - 1 ? 'pb-8 border-l-2 border-ppe-accent-primary/30' : ''} pl-6 relative`}>
+                    <div className="absolute -left-2 top-0 w-4 h-4 bg-ppe-accent-primary rounded-full"></div>
+                    <h3 className="font-heading text-lg font-semibold text-ppe-text-primary mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-ppe-text-secondary">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -120,11 +188,10 @@ export default function AboutPage() {
       <section className="bg-ppe-bg-dark py-16">
         <div className="content-container text-center">
           <h2 className="font-heading text-3xl font-bold text-white mb-4">
-            Ready to Partner With Us?
+            Join Us, Create the Future Together
           </h2>
           <p className="font-body text-white/80 mb-8 max-w-2xl mx-auto">
-            Contact our team today to discuss your PPE requirements and discover 
-            how we can help protect your workforce.
+            We look forward to partnering with you, providing quality products and services
           </p>
           <a
             href="mailto:sales@ppepro.com"
